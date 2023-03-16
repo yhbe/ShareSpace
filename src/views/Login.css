@@ -95,6 +95,10 @@
   border: 1px solid rgba(199, 199, 199, 0.329);
 }
 
+.signup-ul{
+  min-height: 325px !important;
+}
+
 @media (max-width: 930px){
   .login-inner-container{
     flex-direction: column;
@@ -111,6 +115,12 @@
     text-align: center;
     align-items: center;
     margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 395px) {
+  .login-form{
+    padding: 10px 10px;
   }
 
 }

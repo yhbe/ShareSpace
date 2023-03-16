@@ -7,9 +7,10 @@ function RouterSwitch() {
   
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/ShareSpace" element={<Homepage loggedIn={loggedIn}/>}/>
-    </Routes>
+      <Routes>
+        <Route path="/ShareSpace" element={<Homepage loggedIn={loggedIn} />} />
+        <Route path="/ShareSpace/sign-up" element={<Homepage loggedIn={loggedIn} />} />
+      </Routes>
     </BrowserRouter>
   );
 }

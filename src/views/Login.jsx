@@ -1,16 +1,105 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
-  return (
-    <div className="login-container">
-      <div className="login-inner-container">
-        <div className="login-inner-container-left-side">
-          <h1 className="login-title-text">sharespace</h1>
-          <p className="login-left-side-small-text">
-            Connect with friends and the world around you on ShareSpace
-          </p>
-        </div>
+  const [showSignUp, setShowSignUp] = useState(false);
+
+  const navigate = useNavigate();
+
+  // Listen for the popstate event to detect when the user clicks the back button to remove sign-up form and re-show login.
+  useEffect(() => {
+    const handlePopstate = () => {
+      setShowSignUp(false);
+    };
+    window.addEventListener("popstate", handlePopstate);
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+    };
+  }, []);
+
+  // Redirect to login if refresh on sign-up page
+  useEffect(() => {
+    if (window.location.pathname === "/ShareSpace/sign-up") {
+      navigate("../ShareSpace");
+    }
+  }, []);
+
+  const createSignUpForm = () => {
+    window.history.pushState({}, "", "/ShareSpace/sign-up");
+
+    return (
+      <div className="login-inner-container-right-side">
+        <form action="" className="login-form">
+          <ul className="signup-ul">
+            <li>
+              <label htmlFor="fullname"></label>
+              <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                className="login-input"
+                placeholder="Full name"
+                required
+              />
+            </li>
+            <li>
+              <label htmlFor="username"></label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                className="login-input"
+                required
+              />
+            </li>
+            <li>
+              <label htmlFor="emailaddress"></label>
+              <input
+                type="email"
+                name="emailaddress"
+                id="emailaddress"
+                className="login-input"
+                placeholder="Email Address"
+                autoComplete="email-address"
+                required
+              />
+            </li>
+            <li>
+              <label htmlFor="password"></label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                className="login-input"
+                autoComplete="new-password"
+                required
+              />
+            </li>
+            <li>
+              <label htmlFor="confirmpassword"></label>
+              <input
+                type="password"
+                name="confirmpassword"
+                id="confirmpassword"
+                className="login-input"
+                placeholder="Confirm Password"
+                autoComplete="new-password"
+                required
+              />
+            </li>
+            <button className="login-button-log-in">Sign Up</button>
+          </ul>
+        </form>
+      </div>
+    );
+  };
+
+  const createLoginForm = () => {
+    return (
+      <>
         <div className="login-inner-container-right-side">
           <form action="" className="login-form">
             <ul>
@@ -33,18 +122,37 @@ function Login() {
                   id="password"
                   placeholder="Password"
                   className="login-input"
+                  autoComplete="new-password"
                   required
                 />
               </li>
               <button className="login-button-log-in">Log In</button>
               <p className="login-forgot-password">Forgot password?</p>
-              <hr className='login-hr'/>
+              <hr className="login-hr" />
             </ul>
-            <button className="login-create-new-account">
+            <button
+              onClick={() => setShowSignUp(true)}
+              className="login-create-new-account"
+            >
               Create new account
             </button>
           </form>
         </div>
+      </>
+    );
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-inner-container">
+        <div className="login-inner-container-left-side">
+          <h1 className="login-title-text">sharespace</h1>
+          <p className="login-left-side-small-text">
+            Connect with friends and the world around you on ShareSpace
+          </p>
+        </div>
+        {!showSignUp && createLoginForm()}
+        {showSignUp && createSignUpForm()}
       </div>
     </div>
   );
