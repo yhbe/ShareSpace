@@ -22,6 +22,7 @@ function Login() {
                   id="username"
                   placeholder="Username"
                   className="login-input"
+                  required
                 />
               </li>
               <li>
@@ -32,6 +33,7 @@ function Login() {
                   id="password"
                   placeholder="Password"
                   className="login-input"
+                  required
                 />
               </li>
               <button className="login-button-log-in">Log In</button>
