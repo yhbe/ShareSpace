@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login() {
-  const [showSignUp, setShowSignUp] = useState(false);
-
+function Login({port}) {
   const navigate = useNavigate();
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [signUpData, setSignUpData] = useState({
+    fullname: "",
+    username: "",
+    emailaddress: "",
+    password: "",
+  })
 
   // Listen for the popstate event to detect when the user clicks the back button to remove sign-up form and re-show login.
   useEffect(() => {
@@ -25,12 +30,37 @@ function Login() {
     }
   }, []);
 
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setSignUpData(prevState => {
+      return {...prevState, [name]: value}
+    })
+  }
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await fetch(`${port}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signUpData)
+      })
+      if (response.ok){
+        console.log(await response.json())
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
   const createSignUpForm = () => {
     window.history.pushState({}, "", "/ShareSpace/sign-up");
 
     return (
       <div className="login-inner-container-right-side">
-        <form action="" className="login-form">
+        <form onSubmit={(e) => handleFormSubmit(e)} className="login-form">
           <ul className="signup-ul">
             <li>
               <label htmlFor="fullname"></label>
@@ -40,6 +70,7 @@ function Login() {
                 id="fullname"
                 className="login-input"
                 placeholder="Full name"
+                onChange={(e) => handleChange(e)}
                 required
               />
             </li>
@@ -51,6 +82,7 @@ function Login() {
                 id="username"
                 placeholder="Username"
                 className="login-input"
+                onChange={(e) => handleChange(e)}
                 required
               />
             </li>
@@ -63,6 +95,7 @@ function Login() {
                 className="login-input"
                 placeholder="Email Address"
                 autoComplete="email-address"
+                onChange={(e) => handleChange(e)}
                 required
               />
             </li>
@@ -75,22 +108,13 @@ function Login() {
                 placeholder="Password"
                 className="login-input"
                 autoComplete="new-password"
+                onChange={(e) => handleChange(e)}
                 required
               />
             </li>
-            <li>
-              <label htmlFor="confirmpassword"></label>
-              <input
-                type="password"
-                name="confirmpassword"
-                id="confirmpassword"
-                className="login-input"
-                placeholder="Confirm Password"
-                autoComplete="new-password"
-                required
-              />
-            </li>
-            <button className="login-button-log-in">Sign Up</button>
+            <button type="submit" className="login-button-log-in">
+              Sign Up
+            </button>
           </ul>
         </form>
       </div>
