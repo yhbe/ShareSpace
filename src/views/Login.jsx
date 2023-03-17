@@ -48,7 +48,7 @@ function Login({port}) {
         body: JSON.stringify(signUpData)
       })
       if (response.ok){
-        console.log(await response.json())
+        navigate(`../ShareSpace/${signUpData.username}`)
       }
     } catch (error) {
       console.log(error)
@@ -121,11 +121,32 @@ function Login({port}) {
     );
   };
 
+  const handleLoginForm = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = {
+      username: formData.get("username"),
+      password: formData.get("password"),
+    };
+    const response = await fetch(`${port}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+    if (response.ok) {
+      alert("logged in")
+    }
+  };
+
+
   const createLoginForm = () => {
     return (
       <>
         <div className="login-inner-container-right-side">
-          <form action="" className="login-form">
+          <form onSubmit={(event) => handleLoginForm(event)} className="login-form">
             <ul>
               <li>
                 <label htmlFor="username"></label>
