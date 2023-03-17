@@ -137,8 +137,9 @@ function Login({setloggedInUser, port}) {
       body: JSON.stringify(data)
     });
     if (response.ok) {
-      const responseData = await response.json()
-      setloggedInUser(responseData.user)
+      const responseData = await response.json();
+      const { user, token } = responseData;
+      document.cookie = `token=${token}; path=/;`
     }
   };
 
@@ -163,7 +164,7 @@ function Login({setloggedInUser, port}) {
               <li>
                 <label htmlFor="password"></label>
                 <input
-                  type="text"
+                  type="password"
                   name="password"
                   id="password"
                   placeholder="Password"
