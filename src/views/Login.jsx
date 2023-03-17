@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -121,7 +122,7 @@ function Login({setloggedInUser, port}) {
     );
   };
 
-  const handleLoginForm = async (event) => {
+  const handleLoginForm = (event) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -129,19 +130,24 @@ function Login({setloggedInUser, port}) {
       username: formData.get("username"),
       password: formData.get("password"),
     };
-    const response = await fetch(`${port}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify(data)
-    });
-    if (response.ok) {
-      const responseData = await response.json();
-      const { user, token } = responseData;
-      document.cookie = `token=${token}; path=/;`
-    }
+    axios
+      .post(`${port}/users/login`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          const { user } = response.data;
+          setloggedInUser(user)
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
+
 
 
   const createLoginForm = () => {
