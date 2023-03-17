@@ -1,11 +1,11 @@
-import React from 'react'
-import Login from './Login'
+import React from 'react';
+import Login from './Login';
 
-function Homepage({loggedIn, port}) {
-  if (!loggedIn) return (<Login port={port}/>)
+function Homepage({loggedInUser,setloggedInUser, port}) {
+  if (!loggedInUser) return <Login port={port} setloggedInUser={setloggedInUser}/>;
   
   return (
-    <div>Homepage</div>
+    <div>Hello {loggedInUser.username}</div>
   )
 }
 

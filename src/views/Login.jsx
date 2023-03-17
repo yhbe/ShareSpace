@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login({port}) {
+function Login({setloggedInUser, port}) {
   const navigate = useNavigate();
   const [showSignUp, setShowSignUp] = useState(false);
   const [signUpData, setSignUpData] = useState({
@@ -137,7 +137,8 @@ function Login({port}) {
       body: JSON.stringify(data)
     });
     if (response.ok) {
-      alert("logged in")
+      const responseData = await response.json()
+      setloggedInUser(responseData.user)
     }
   };
 
