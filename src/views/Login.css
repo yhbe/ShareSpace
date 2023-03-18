@@ -99,6 +99,19 @@
   min-height: 325px !important;
 }
 
+.login-error-text{
+  display: flex;
+  width: min-content;
+  white-space: nowrap;
+  margin: auto;
+  color: red;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
 @media (max-width: 930px){
   .login-inner-container{
     flex-direction: column;
@@ -124,3 +137,4 @@
   }
 
 }
+

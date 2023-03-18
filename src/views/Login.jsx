@@ -124,6 +124,7 @@ function Login({setloggedInUser, port}) {
 
   const handleLoginForm = (event) => {
     event.preventDefault();
+    const errorP = document.querySelector(".login-error-text");
     const form = event.target;
     const formData = new FormData(form);
     const data = {
@@ -139,12 +140,14 @@ function Login({setloggedInUser, port}) {
       })
       .then((response) => {
         if (response.status === 200) {
+          errorP.classList.add("hidden")
           const { user } = response.data;
           setloggedInUser(user)
         }
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(async (error) => {
+        errorP.textContent = error.response.data.message;
+        errorP.classList.remove("hidden");
       });
   };
 
@@ -178,6 +181,9 @@ function Login({setloggedInUser, port}) {
                   autoComplete="new-password"
                   required
                 />
+                <div aria-live='assertive'>
+              <p className='login-error-text hidden'></p>
+                </div>
               </li>
               <button className="login-button-log-in">Log In</button>
               <p className="login-forgot-password">Forgot password?</p>
