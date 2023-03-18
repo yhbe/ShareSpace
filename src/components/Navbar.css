@@ -1,0 +1,39 @@
+.nav-container{
+  display: flex;
+  height: 60px;
+  align-items: center;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.438);
+}
+
+.nav-inner-container{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  max-width: 1000px;
+  margin: auto;
+  align-items: center;
+}
+
+.nav-title{
+  font-size: 1.5rem;
+  color: rgb(42, 127, 255);
+}
+
+.nav-right-side{
+  display: flex;
+  align-items: center;
+}
+
+.nav-user-div{
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 250px;
+  align-items: center;
+  font-size: 1.5rem;
+}
