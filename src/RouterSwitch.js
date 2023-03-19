@@ -35,7 +35,6 @@ function RouterSwitch() {
         console.error(error);
       }
     }
-
     fetchAllUsers()
   }, []);
   console.log(allUsers)
@@ -45,7 +44,7 @@ function RouterSwitch() {
       <Routes>
         <Route
           path="/ShareSpace"
-          element={<Homepage loggedInUser={loggedInUser} setloggedInUser={setloggedInUser} port={port} />}
+          element={<Homepage loggedInUser={loggedInUser} setloggedInUser={setloggedInUser} port={port} allUsers={allUsers} />}
         />
         <Route
           path="/ShareSpace/sign-up"
