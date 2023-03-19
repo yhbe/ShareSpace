@@ -12,12 +12,12 @@ function Navbar({ loggedInUser }) {
           </div>
         <div className="nav-right-side">
           <div className="nav-user-div">
-            <img src="" alt="" />
+            <img className='nav-loggedInUser-profile-picture' src={loggedInUser.profilepicture} alt={`${loggedInUser.username}`} />
             <p className="nav-user-username">{loggedInUser.username}</p>
           </div>
           <div className="nav-buttons-container">
             <i className="fa-solid fa-people-group"></i>
-            <i class="fa-solid fa-ellipsis"></i>
+            <i className="fa-solid fa-ellipsis"></i>
           </div>
         </div>
       </div>

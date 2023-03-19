@@ -44,12 +44,14 @@ function Login({setloggedInUser, port}) {
       const response = await fetch(`${port}/users`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(signUpData)
+        body: JSON.stringify(signUpData),
+        credentials: 'include'
       })
       if (response.ok){
-        navigate(`../ShareSpace/${signUpData.username}`)
+        const res = await response.json()
+        setloggedInUser(res.newUser)
       }
     } catch (error) {
       console.log(error)

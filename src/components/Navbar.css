@@ -37,3 +37,8 @@
   align-items: center;
   font-size: 1.5rem;
 }
+
+.nav-loggedInUser-profile-picture{
+  width: 45px;
+  margin-right: 5px;
+}
