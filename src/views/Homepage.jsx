@@ -7,7 +7,7 @@ function Homepage({loggedInUser,setloggedInUser, port}) {
   
   return (
     <div>
-      <Navbar loggedInUser={loggedInUser}/>
+      <Navbar loggedInUser={loggedInUser} port={port}/>
       Hello {loggedInUser.username}
       </div>
   )

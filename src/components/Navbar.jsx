@@ -1,8 +1,20 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import "./Navbar.css";
 
-function Navbar({ loggedInUser }) {
+function Navbar({ loggedInUser, port }) {
   const [navBarSettings, setNavBarSettings] = useState(false)
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${port}/users/logout`, {}, {
+        withCredentials: true
+      })
+      window.location.reload()
+    } catch (err) {
+      console.log(err)
+    }
+  };
 
   const createUserDropdown = () => {
     const ellipsis = document.querySelector(".fa-ellipsis")
@@ -16,7 +28,7 @@ function Navbar({ loggedInUser }) {
       <div className="nav-user-dropdown">
         <p className="nav-settings pointer hover-bold">Settings</p>
         <hr />
-        <p className="nav-log-out pointer hover-bold">Log Out</p>
+        <p onClick={() => handleLogout()} className="nav-log-out pointer hover-bold">Log Out</p>
       </div>
     );
   }
