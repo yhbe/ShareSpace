@@ -1,6 +1,6 @@
 .nav-container{
   display: flex;
-  height: 60px;
+  height: 70px;
   align-items: center;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.438);
 }
@@ -8,20 +8,31 @@
 .nav-inner-container{
   display: flex;
   justify-content: space-between;
-  width: 70%;
-  max-width: 1000px;
+  width: 100%;
+  padding: 0px 40px;
+  max-width: 1200px;
   margin: auto;
   align-items: center;
 }
 
 .nav-title{
   font-size: 1.5rem;
-  color: rgb(42, 127, 255);
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.nav-left-side{
+  display: flex;
+  flex: 1;
 }
 
 .nav-right-side{
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  max-width: 350px;
+  flex: 1;
 }
 
 .nav-user-div{
@@ -33,7 +44,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 250px;
+  width: 100%;
   align-items: center;
   font-size: 1.5rem;
 }
@@ -41,4 +52,33 @@
 .nav-loggedInUser-profile-picture{
   width: 45px;
   margin-right: 5px;
+  cursor: pointer;
+}
+
+.nav-user-username{
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+
+  .nav-inner-container{
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .nav-right-side{
+    width: 150px;
+  }
+
+  .nav-user-username {
+    display: none;
+    background-color: red;
+  }
+
 }

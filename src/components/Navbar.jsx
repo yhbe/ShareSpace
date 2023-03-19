@@ -16,8 +16,8 @@ function Navbar({ loggedInUser }) {
             <p className="nav-user-username">{loggedInUser.username}</p>
           </div>
           <div className="nav-buttons-container">
-            <i className="fa-solid fa-people-group"></i>
-            <i className="fa-solid fa-ellipsis"></i>
+            <i className="fa-solid fa-people-group pointer"></i>
+            <i className="fa-solid fa-ellipsis pointer"></i>
           </div>
         </div>
       </div>
