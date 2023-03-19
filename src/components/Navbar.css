@@ -6,7 +6,7 @@
 }
 
 .nav-inner-container{
-  align-items: center
+  align-items: center;
 }
 
 .align-nav-homepage-container{
@@ -45,9 +45,8 @@
 
 .nav-buttons-container{
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: space-between;
+  width: 120px;
   align-items: center;
   font-size: 1.5rem;
 }
@@ -118,8 +117,15 @@
     margin: 0;
   }
 
+  .nav-buttons-container{
+    width: 50px;
+  }
+
   .nav-right-side{
-    width: 150px;
+    display: flex;
+    margin-left: auto;
+    justify-content: right;
+    margin-right: 10px;
   }
 
   .nav-user-username {

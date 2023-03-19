@@ -1,4 +1,38 @@
+.useraside-main-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.useraside-all-new-users-text{
+  display: flex;
+  align-self: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.users-aside-left-side{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.users-aside-right-side-add-icon-container{
+  display: flex;
+  align-items: center;
+}
+
 .users-aside-user-container{
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
+}
+
+.users-username-container{
+  max-width: 100px;
+  word-wrap: break-word;
+}
+
+.user-aside-username{
+  margin-left: 5px;
 }

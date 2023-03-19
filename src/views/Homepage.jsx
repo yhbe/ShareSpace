@@ -10,7 +10,7 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
   return (
     <div className="homepage-container">
       <Navbar loggedInUser={loggedInUser} port={port} />
-      <main className="align-nav-homepage-container">
+      <main className="align-nav-homepage-container homepage-aside-and-content">
         Hello {loggedInUser.username}
         <UsersAside allUsers={allUsers} loggedInUser={loggedInUser} />
       </main>
