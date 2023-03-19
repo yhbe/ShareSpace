@@ -6,13 +6,16 @@
 }
 
 .nav-inner-container{
+  align-items: center
+}
+
+.align-nav-homepage-container{
   display: flex;
   justify-content: space-between;
-  width: 100%;
   padding: 0px 40px;
   max-width: 1200px;
   margin: auto;
-  align-items: center;
+  width: 100%;
 }
 
 .nav-title{

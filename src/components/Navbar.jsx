@@ -34,7 +34,7 @@ function Navbar({ loggedInUser, port }) {
   }
   return (
     <div className="nav-container">
-      <div className="nav-inner-container">
+      <div className="nav-inner-container align-nav-homepage-container">
         <div className="nav-left-side">
           <p className="nav-title">ShareSpace</p>
         </div>
@@ -49,15 +49,14 @@ function Navbar({ loggedInUser, port }) {
           </div>
           <div className="nav-buttons-container">
             <div className="relative">
-            <i className="fa-solid fa-people-group pointer relative sizing-button"></i>
+              <i className="fa-solid fa-people-group pointer relative sizing-button"></i>
             </div>
-            <div className='relative'>
-            <i
-              onClick={() => setNavBarSettings(true)}
-              className="fa-solid fa-ellipsis pointer sizing-button"
-            >
-            </i>
-            {navBarSettings && createUserDropdown()}
+            <div className="relative">
+              <i
+                onClick={() => setNavBarSettings(true)}
+                className="fa-solid fa-ellipsis pointer sizing-button"
+              ></i>
+              {navBarSettings && createUserDropdown()}
             </div>
           </div>
         </div>

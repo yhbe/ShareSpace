@@ -1,0 +1,16 @@
+.homepage-container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+/*from NavBar.css .align-nav-homepage-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 40px;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+} */
