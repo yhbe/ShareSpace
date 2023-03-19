@@ -64,8 +64,51 @@
   cursor: pointer;
 }
 
-@media (max-width: 650px) {
+.relative{
+  position: relative
+}
 
+.nav-user-dropdown{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px black;
+  background-color: white;
+  color: black;
+  left: -60px;
+  top: 65px;
+}
+
+.sizing-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.sizing-button:hover{
+  transition: 1s;
+  background-color: black;
+  color: white;
+}
+
+.active{
+  border: 2px solid black;
+}
+
+.hover-bold:hover{
+  transition: 1s;
+  padding: 2px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+@media (max-width: 650px) {
   .nav-inner-container{
     width: 100%;
     justify-content: space-between;
@@ -80,5 +123,4 @@
     display: none;
     background-color: red;
   }
-
 }

@@ -169,6 +169,7 @@ function Login({setloggedInUser, port}) {
                   id="username"
                   placeholder="Username"
                   className="login-input"
+                  autoComplete='username'
                   required
                 />
               </li>
