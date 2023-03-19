@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import UsersAside from '../components/UsersAside';
 import Login from './Login';
 
 function Homepage({loggedInUser,setloggedInUser, port}) {
@@ -8,6 +9,7 @@ function Homepage({loggedInUser,setloggedInUser, port}) {
   return (
     <div>
       <Navbar loggedInUser={loggedInUser} port={port}/>
+      <UsersAside />
       Hello {loggedInUser.username}
       </div>
   )

@@ -5,6 +5,7 @@ import Homepage from "./views/Homepage";
 
 function RouterSwitch() {
   const [loggedInUser, setloggedInUser] = useState(false)
+  const [allUsers, setAllUsers] = useState(undefined)
   const port = process.env.REACT_APP_PORT || "http://localhost:5000"
 
   useEffect(() => {
@@ -25,7 +26,19 @@ function RouterSwitch() {
       }
     };
     fetchUser();
+
+    const fetchAllUsers = async () => {
+      try {
+        const response = await axios.get(`${port}/users`);
+        setAllUsers(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchAllUsers()
   }, []);
+  console.log(allUsers)
   
   return (
     <BrowserRouter>
