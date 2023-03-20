@@ -9,6 +9,8 @@ function RouterSwitch() {
   const [allUsers, setAllUsers] = useState(undefined)
   const port = process.env.REACT_APP_PORT || "http://localhost:5000"
 
+  console.log(loggedInUser)
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -38,6 +40,18 @@ function RouterSwitch() {
     }
     fetchAllUsers()
   }, []);
+
+  const refreshPage = () => {
+    const fetchAllUsers = async () => {
+      try {
+        const response = await axios.get(`${port}/users`);
+        setAllUsers(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchAllUsers();
+  }
   
   return (
     <BrowserRouter>
@@ -61,7 +75,7 @@ function RouterSwitch() {
         />
         <Route
           path="/ShareSpace/:user"
-          element={<Userpage port={port} allUsers={allUsers} loggedInUser={loggedInUser}/>}
+          element={<Userpage port={port} allUsers={allUsers} loggedInUser={loggedInUser} refreshPage refreshPage={refreshPage}/>}
         />
       </Routes>
     </BrowserRouter>

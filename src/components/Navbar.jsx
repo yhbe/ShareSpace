@@ -45,12 +45,12 @@ function Navbar({ loggedInUser, port }) {
           <div className="nav-user-div">
             <img
               className="nav-loggedInUser-profile-picture"
-              onClick={() => navigate(`${loggedInUser.id}`)}
+              onClick={() => navigate(`../ShareSpace/${loggedInUser.id}`)}
               src={loggedInUser.profilepicture}
               alt={`${loggedInUser.username}`}
             />
             <p
-              onClick={() => navigate(`${loggedInUser.id}`)}
+              onClick={() => navigate(`../ShareSpace/${loggedInUser.id}`)}
               className="nav-user-username"
             >
               {loggedInUser.username}

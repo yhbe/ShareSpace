@@ -1,10 +1,11 @@
+import axios from 'axios'
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import "./Userpage.css"
 
 
-function Userpage({port,allUsers, loggedInUser}) {
+function Userpage({port,allUsers, loggedInUser, refreshPage}) {
   const {user} = useParams()
   const navigate = useNavigate()
 
@@ -12,7 +13,54 @@ function Userpage({port,allUsers, loggedInUser}) {
 
   const foundUser = allUsers?.find(person => person._id === user) || null
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    axios
+      .post(`${port}/users/userPost`, {
+        content: formData.get("user-text-area"),
+        author: loggedInUser.id,
+      })
+      .then((response) => {
+        refreshPage()
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+  };
+
   const createUserPage = () => {
+    const createPostJSX = (post) => {
+      return (
+        <div className="user-post-container">
+          <div className="post-container-top">
+            <div className="post-container-top-user-info">
+              <img src={foundUser.profilepicture} alt={foundUser.username} />
+              <p className="post-username">{foundUser.username}</p>
+            </div>
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+          <div className="post-container-bottom">
+            <p className="post-content">{post.content}</p>
+            <hr />
+            <div className="post-container-bottom-likes-comments-div">
+              <p className="amount-of-likes">0 Likes</p>
+              <p className="amount-of-comments">0 Comments</p>
+            </div>
+            <div className="post-like-or-comment">
+              <button className="post-button">Like</button>
+              <button className="post-button darkergray">Comment</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    const posts = loggedInUser.posts.map(post => createPostJSX(post))
+
+    
     return (
       <div className="user-page-main-container">
         <Navbar port={port} loggedInUser={loggedInUser} />
@@ -57,7 +105,7 @@ function Userpage({port,allUsers, loggedInUser}) {
               </div>
             </div>
             <div className="userpage-bottom-right">
-              <form className='user-form' action="">
+              <form onSubmit={(e) => handleFormSubmit(e)} className='user-form' action="">
               <textarea
                 className="user-text-area"
                 name="user-text-area"
@@ -67,8 +115,11 @@ function Userpage({port,allUsers, loggedInUser}) {
                 placeholder="What's on your mind?"
               >
               </textarea>
-              <button className='submit-button'>Submit</button>
+              <button type='submit' className='submit-button'>Submit</button>
               </form>
+              <div className="users-posts">
+                {posts}
+              </div>
             </div>
           </div>
         </div>

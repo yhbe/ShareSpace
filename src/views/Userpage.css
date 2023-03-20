@@ -90,7 +90,7 @@
   position: relative;
   width: 80%;
   height: 200px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.637);
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.178);
   border-radius: 10px;
   margin-left: auto;
 }
@@ -127,4 +127,69 @@ textarea {
   -moz-box-shadow: none;
   box-shadow: none;
   resize: none;
+}
+
+.user-post-container{
+  padding: 20px;
+  width: 80%;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-top: 20px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.349);
+}
+
+.post-container-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-container-top-user-info{
+  display: flex;
+  align-items: center;
+}
+
+.post-container-bottom-likes-comments-div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-like-or-comment{
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-button{
+  flex: 1;
+  border: none;
+  padding: 10px;
+}
+
+.darkergray{
+  background-color: gainsboro;
+}
+
+
+@media (max-width: 750px) {
+  .userPage-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .userpage-bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .user-form{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .user-post-container{
+    width: 100%;
+    margin-bottom: 50px;
+  }
 }
