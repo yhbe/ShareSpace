@@ -1,0 +1,130 @@
+.user-page-main-container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.userPage-container{
+  width: 100%;
+  padding: 0px 40px;
+  max-width: 1200px;
+  margin: 50px auto 0px auto;
+  font-size: 1.5rem;
+}
+
+
+.userpage-user{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.userpage-user-img{
+  margin-right: 15px;
+}
+
+.userpage-bottom{
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.aboutme-edit-container{
+  margin-bottom: 35px;
+  background-color: rgb(211, 211, 211);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px black;
+}
+
+.aboutme-edit-container-top{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: rgba(187, 177, 177, 0.623);
+  padding: 10px;
+  font-weight: bold;
+  align-items: center;
+}
+
+.about-me-text {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.userpage-friends-container{
+  min-width: 300px;
+  background-color: rgb(211, 211, 211);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px black;
+}
+
+.userpage-friends-text-container{
+  background-color: rgba(187, 177, 177, 0.623);
+  padding: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.user-all-friends-container{
+  padding: 5px;
+}
+
+.friend-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+}
+
+.userpage-bottom-right{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.user-form{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 80%;
+  height: 200px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.637);
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+.submit-button{
+  position: absolute;
+  width: 100px;
+  right: 20px;
+  bottom: 10px;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px black;
+  font-weight: bold;
+}
+
+.user-text-area{
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  max-height: 150px;
+  text-indent: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  resize: none;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}

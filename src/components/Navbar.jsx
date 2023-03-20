@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Navbar.css";
 
 function Navbar({ loggedInUser, port }) {
   const [navBarSettings, setNavBarSettings] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     try {
@@ -42,10 +45,16 @@ function Navbar({ loggedInUser, port }) {
           <div className="nav-user-div">
             <img
               className="nav-loggedInUser-profile-picture"
+              onClick={() => navigate(`${loggedInUser.id}`)}
               src={loggedInUser.profilepicture}
               alt={`${loggedInUser.username}`}
             />
-            <p className="nav-user-username">{loggedInUser.username}</p>
+            <p
+              onClick={() => navigate(`${loggedInUser.id}`)}
+              className="nav-user-username"
+            >
+              {loggedInUser.username}
+            </p>
           </div>
           <div className="nav-buttons-container">
             <div className="relative">

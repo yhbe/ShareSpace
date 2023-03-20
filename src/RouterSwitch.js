@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./views/Homepage";
+import Userpage from "./views/Userpage";
 
 function RouterSwitch() {
   const [loggedInUser, setloggedInUser] = useState(false)
@@ -37,18 +38,30 @@ function RouterSwitch() {
     }
     fetchAllUsers()
   }, []);
-  console.log(allUsers)
   
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path="/ShareSpace"
-          element={<Homepage loggedInUser={loggedInUser} setloggedInUser={setloggedInUser} port={port} allUsers={allUsers} />}
+          element={
+            <Homepage
+              loggedInUser={loggedInUser}
+              setloggedInUser={setloggedInUser}
+              port={port}
+              allUsers={allUsers}
+            />
+          }
         />
         <Route
           path="/ShareSpace/sign-up"
-          element={<Homepage loggedInUser={loggedInUser} />}
+          element={
+            <Homepage loggedInUser={loggedInUser} />
+          }
+        />
+        <Route
+          path="/ShareSpace/:user"
+          element={<Userpage port={port} allUsers={allUsers} loggedInUser={loggedInUser}/>}
         />
       </Routes>
     </BrowserRouter>
