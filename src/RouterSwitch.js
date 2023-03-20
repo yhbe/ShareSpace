@@ -52,6 +52,8 @@ function RouterSwitch() {
     };
     fetchAllUsers();
   }
+
+  console.log(allUsers)
   
   return (
     <BrowserRouter>
@@ -75,7 +77,7 @@ function RouterSwitch() {
         />
         <Route
           path="/ShareSpace/:user"
-          element={<Userpage port={port} allUsers={allUsers} loggedInUser={loggedInUser} refreshPage refreshPage={refreshPage}/>}
+          element={<Userpage port={port} allUsers={allUsers} loggedInUser={loggedInUser} refreshPage={refreshPage}/>}
         />
       </Routes>
     </BrowserRouter>

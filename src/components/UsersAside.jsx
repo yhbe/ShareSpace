@@ -21,7 +21,7 @@ function UsersAside({allUsers, loggedInUser}) {
           </div>
         </div>
         <div className="users-aside-right-side-add-icon-container">
-          <i class="fa-solid fa-user-plus clickable"></i>
+          <i className="fa-solid fa-user-plus clickable"></i>
         </div>
       </div>
     );

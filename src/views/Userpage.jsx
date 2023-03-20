@@ -23,7 +23,10 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
         author: loggedInUser.id,
       })
       .then((response) => {
-        refreshPage()
+        if (response.status === 200){
+          form.reset()
+          refreshPage()
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -34,13 +37,13 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
   const createUserPage = () => {
     const createPostJSX = (post) => {
       return (
-        <div className="user-post-container">
+        <div key={post._id} className="user-post-container">
           <div className="post-container-top">
             <div className="post-container-top-user-info">
               <img src={foundUser.profilepicture} alt={foundUser.username} />
               <p className="post-username">{foundUser.username}</p>
             </div>
-            <i class="fa-solid fa-trash-can"></i>
+            <i className="fa-solid fa-trash-can"></i>
           </div>
           <div className="post-container-bottom">
             <p className="post-content">{post.content}</p>
@@ -57,8 +60,9 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
         </div>
       );
     }
-    
-    const posts = loggedInUser.posts.map(post => createPostJSX(post))
+
+
+    const posts = foundUser.posts.map((post) => createPostJSX(post));
 
     
     return (
