@@ -58,9 +58,6 @@ function Navbar({ loggedInUser, port }) {
           </div>
           <div className="nav-buttons-container">
             <div className="relative">
-              <i className="fa-solid fa-people-group pointer relative sizing-button"></i>
-            </div>
-            <div className="relative">
               <i
                 onClick={() => setNavBarSettings(true)}
                 className="fa-solid fa-ellipsis pointer sizing-button"
