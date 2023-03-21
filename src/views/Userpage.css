@@ -185,6 +185,16 @@ textarea {
   height: 35px;
 }
 
+.user-comment-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-image{
+  width: 40px;
+}
+
 
 @media (max-width: 750px) {
   .userPage-container{

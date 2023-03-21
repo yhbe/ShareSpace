@@ -39,7 +39,7 @@ function Navbar({ loggedInUser, port }) {
     <div className="nav-container">
       <div className="nav-inner-container align-nav-homepage-container">
         <div className="nav-left-side">
-          <p className="nav-title">ShareSpace</p>
+          <p onClick={() => navigate("../ShareSpace")} className="nav-title">ShareSpace</p>
         </div>
         <div className="nav-right-side">
           <div className="nav-user-div">

@@ -35,7 +35,45 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
 
   const createUserPage = () => {
     const createPostJSX = (post,index) => {
+      console.log(foundUser)
       if (!post._id) return
+
+      const deleteComment = (commentId, postId, foundUserId) => {
+        axios
+          .delete(`${port}/users/deleteComment`, {
+            data: {
+              commentId: commentId,
+              postId: postId,
+              userId: foundUserId
+            },
+          })
+          .then((response) => {
+            console.log(response);
+            refreshPage();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+      const createComments = (comment) => {
+        return (
+          <div key={comment.id} className="user-comment-div">
+            <img
+              src={comment.profilepicture}
+              alt={comment.user}
+              className="comment-image"
+            />
+            <p className="comment-user">{comment.user}</p>
+            <p className="comment-text">{comment.text}</p>
+            {comment.userid === user && (
+              <i onClick={() => deleteComment(comment.id, post._id, foundUser._id)} className="fa-solid fa-trash-can"></i>
+            )}
+          </div>
+        );
+      }
+
+      const commentJSX = post.comments.map(comment => createComments(comment))
       return (
         <div key={post._id} className="user-post-container">
           <div className="post-container-top">
@@ -68,6 +106,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
               />
               <button type="submit">Submit</button>
             </form>
+            {commentJSX}
           </div>
         </div>
       );
@@ -88,6 +127,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
             usercomment: formData.get("add-a-comment-input"),
             user: loggedInUser.username,
             userid: loggedInUser.id,
+            userprofilepicture: loggedInUser.profilepicture
           })
           .then((response) => {
             console.log(response);
