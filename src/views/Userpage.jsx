@@ -10,7 +10,8 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
   const navigate = useNavigate()
 
   if (!loggedInUser) return navigate("../ShareSpace")
-
+  
+  console.log(user)
   const foundUser = allUsers?.find(person => person._id === user) || null
 
   const handleFormSubmit = (e) => {

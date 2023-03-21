@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./UserAside.css";
 
 function UsersAside({allUsers, loggedInUser}) {
+  const navigate = useNavigate()
   
   const createFollowUserJSX = (user) => {
     if (user._id === loggedInUser.id) {
@@ -12,12 +14,18 @@ function UsersAside({allUsers, loggedInUser}) {
       <div className="users-aside-user-container" key={user._id}>
         <div className="users-aside-left-side">
           <img
+            onClick={() => navigate(`../ShareSpace/${user._id}`)}
             className="clickable"
             src={user.profilepicture}
             alt={user.username}
           />
           <div className="users-username-container">
-            <p className="user-aside-username clickable">{user.username}</p>
+            <p
+              onClick={() => navigate(`../ShareSpace/${user._id}`)}
+              className="user-aside-username clickable"
+            >
+              {user.username}
+            </p>
           </div>
         </div>
         <div className="users-aside-right-side-add-icon-container">
