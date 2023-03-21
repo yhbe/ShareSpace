@@ -57,6 +57,23 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
           });
       };
 
+      const deletePost = (foundUserId, postId) => {
+          axios
+            .delete(`${port}/users/deletePost`, {
+              data: {
+                postId: postId,
+                userId: foundUserId,
+              },
+            })
+            .then((response) => {
+              console.log(response);
+              refreshPage();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+      }
+
       const createComments = (comment) => {
         return (
           <div key={comment.id} className="user-comment-div">
@@ -82,7 +99,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
               <img src={foundUser.profilepicture} alt={foundUser.username} />
               <p className="post-username">{foundUser.username}</p>
             </div>
-            <i className="fa-solid fa-trash-can"></i>
+            <i onClick={() => deletePost(foundUser._id,post._id)} className="fa-solid fa-trash-can"></i>
           </div>
           <div className="post-container-bottom">
             <p className="post-content">{post.content}</p>
