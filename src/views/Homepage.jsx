@@ -12,7 +12,7 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
       <Navbar loggedInUser={loggedInUser} port={port} />
       <main className="align-nav-homepage-container homepage-aside-and-content">
         Hello {loggedInUser.username}
-        <UsersAside allUsers={allUsers} loggedInUser={loggedInUser} />
+        <UsersAside port={port} allUsers={allUsers} loggedInUser={loggedInUser} />
       </main>
     </div>
   );
