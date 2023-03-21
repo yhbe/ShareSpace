@@ -31,11 +31,11 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
       .catch((error) => {
         console.log(error);
       });
-
   };
 
   const createUserPage = () => {
-    const createPostJSX = (post) => {
+    const createPostJSX = (post,index) => {
+      if (!post._id) return
       return (
         <div key={post._id} className="user-post-container">
           <div className="post-container-top">
@@ -54,15 +54,55 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
             </div>
             <div className="post-like-or-comment">
               <button className="post-button">Like</button>
-              <button className="post-button darkergray">Comment</button>
             </div>
+            <form
+              onSubmit={(e) => handleAddComment(e, index, post._id)}
+              className="user-add-comment-form"
+              action=""
+            >
+              <input
+                type="text"
+                name="add-a-comment-input"
+                id=""
+                placeholder="add a comment"
+              />
+              <button type="submit">Submit</button>
+            </form>
           </div>
         </div>
       );
-    }
+    } 
+
+    const handleAddComment = async (e, index, id) => {
+      console.log(id, "*", index, "index", e)
+      e.preventDefault();
+      const form = e.target;
+      console.log(form)
+      const formData = new FormData(form);
+      try {
+        axios
+          .post(`${port}/users/addComment`, {
+            postindex: index,
+            postuser: user,
+            postid: id,
+            usercomment: formData.get("add-a-comment-input"),
+            user: loggedInUser.username,
+            userid: loggedInUser.id,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
 
-    const posts = foundUser.posts.map((post) => createPostJSX(post));
+
+    const posts = foundUser.posts.map((post,index) => createPostJSX(post,index));
 
     
     return (

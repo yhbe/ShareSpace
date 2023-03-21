@@ -165,8 +165,24 @@ textarea {
   padding: 10px;
 }
 
+.post-button:hover {
+  background-color: rgb(116, 113, 113);
+  color: white;
+  cursor: pointer;
+}
+
 .darkergray{
   background-color: gainsboro;
+}
+
+.user-add-comment-form{
+  display: flex;
+  width: 100%;
+}
+
+.user-add-comment-form > * {
+  flex: 1;
+  height: 35px;
 }
 
 
