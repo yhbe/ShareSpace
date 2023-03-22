@@ -36,11 +36,64 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
   
   const friendRequests = loggedInUser.friends.map(friend => showFriendRequests(friend))
 
+  
+  const createPostJSX = (post) => {
+    return (
+      <div onClick={() => window.location = `../ShareSpace/${loggedInUser.id}`} className="user-post-container">
+        <div className="post-container-top">
+        <p>{loggedInUser.username}</p>
+        <h1>{post.content}</h1>
+        </div>
+      </div>
+    );
+  }
+
+  const createFollowerPost = (user) => {
+    if (!user || !user._id || user._id === loggedInUser.id) {
+      return null;
+    }
+
+    const potentialFriend = user.friends.find(
+      (friend) => friend.userId === loggedInUser.id
+    );
+
+    if (!potentialFriend || potentialFriend.status !== "accepted") {
+      return null;
+    }
+
+
+    const postsJSX = user.posts.map((post) => {
+      return (
+        <div
+          key={post._id}
+          onClick={() => (window.location = `../ShareSpace/${user._id}`)}
+          className="user-post-container"
+        >
+          <div className="post-container-top">
+            <p>{user.username}</p>
+            <h1>{post.content}</h1>
+          </div>
+        </div>
+      );
+    });
+
+    return <>{postsJSX}</>;
+  };
+
+  
+  const followerPosts = allUsers.map(user => createFollowerPost(user))
+  
+  const posts = loggedInUser.posts.map(post => createPostJSX(post))
+
   return (
     <div className="homepage-container">
       <Navbar loggedInUser={loggedInUser} port={port} />
       <main className="align-nav-homepage-container homepage-aside-and-content">
+        <div className="main-inner-container">
+        {followerPosts && followerPosts}
+        {posts && posts}
         {friendRequests}
+        </div>
         <UsersAside port={port} allUsers={allUsers} loggedInUser={loggedInUser} />
       </main>
     </div>
