@@ -11,7 +11,6 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
 
   if (!loggedInUser) return navigate("../ShareSpace")
   
-  console.log(user)
   const foundUser = allUsers?.find(person => person._id === user) || null
 
   const handleFormSubmit = (e) => {
@@ -99,7 +98,10 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
               <img src={foundUser.profilepicture} alt={foundUser.username} />
               <p className="post-username">{foundUser.username}</p>
             </div>
-            <i onClick={() => deletePost(foundUser._id,post._id)} className="fa-solid fa-trash-can"></i>
+            <i
+              onClick={() => deletePost(foundUser._id, post._id)}
+              className="fa-solid fa-trash-can"
+            ></i>
           </div>
           <div className="post-container-bottom">
             <p className="post-content">{post.content}</p>
@@ -111,19 +113,19 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
             <div className="post-like-or-comment">
               <button className="post-button">Like</button>
             </div>
-            <form
-              onSubmit={(e) => handleAddComment(e, index, post._id)}
-              className="user-add-comment-form"
-              action=""
-            >
-              <input
-                type="text"
-                name="add-a-comment-input"
-                id=""
-                placeholder="add a comment"
-              />
-              <button type="submit">Submit</button>
-            </form>
+              <form
+                onSubmit={(e) => handleAddComment(e, index, post._id)}
+                className="user-add-comment-form"
+                action=""
+              >
+                <input
+                  type="text"
+                  name="add-a-comment-input"
+                  id=""
+                  placeholder="add a comment"
+                />
+                <button type="submit">Submit</button>
+              </form>
             {commentJSX}
           </div>
         </div>
@@ -207,7 +209,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
               </div>
             </div>
             <div className="userpage-bottom-right">
-              <form onSubmit={(e) => handleFormSubmit(e)} className='user-form' action="">
+              {loggedInUser.id === foundUser._id && <form onSubmit={(e) => handleFormSubmit(e)} className='user-form' action="">
               <textarea
                 className="user-text-area"
                 name="user-text-area"
@@ -218,7 +220,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
               >
               </textarea>
               <button type='submit' className='submit-button'>Submit</button>
-              </form>
+              </form>}
               <div className="users-posts">
                 {posts}
               </div>
