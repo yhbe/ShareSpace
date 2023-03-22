@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ShareSpace/static/css/main.034552ac.css",
+    "main.js": "/ShareSpace/static/js/main.a224f776.js",
+    "index.html": "/ShareSpace/index.html",
+    "main.034552ac.css.map": "/ShareSpace/static/css/main.034552ac.css.map",
+    "main.a224f776.js.map": "/ShareSpace/static/js/main.a224f776.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.034552ac.css",
+    "static/js/main.a224f776.js"
+  ]
+}
