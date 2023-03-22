@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./UserAside.css";
 
-function UsersAside({port, allUsers, loggedInUser}) {
+function UsersAside({port, allUsers, loggedInUser, refreshPage}) {
   const navigate = useNavigate()
   
   const createFollowUserJSX = (user) => {
@@ -15,14 +15,16 @@ function UsersAside({port, allUsers, loggedInUser}) {
       return
     }
 
-    console.log(loggedInUser.id)
-
-    const sendFriendRequest = async (userId, loggedInUserId) => {
+    const sendFriendRequest = async (userId, loggedInUserId, toRemove) => {
+      document.getElementById(`${userId}`).parentNode.remove()
       try {
         const response = await axios.post(`${port}/users/sendFriendRequest`, {
           userId,
           loggedInUserId
         });
+        if (response.status === 200){
+          refreshPage()
+        }
         return response.data;
       } catch (error) {
         console.error(error);
@@ -48,8 +50,9 @@ function UsersAside({port, allUsers, loggedInUser}) {
             </p>
           </div>
         </div>
-        <div className="users-aside-right-side-add-icon-container">
-          <i onClick={() => sendFriendRequest(user._id, loggedInUser.id)} className="fa-solid fa-user-plus clickable"></i>
+        <div 
+        className="users-aside-right-side-add-icon-container">
+          <i onClick={() => sendFriendRequest(user._id, loggedInUser.id)} id={`${user._id}`} className={`fa-solid fa-user-plus clickable ${user._id}`}></i>
         </div>
       </div>
     );
@@ -59,7 +62,7 @@ function UsersAside({port, allUsers, loggedInUser}) {
     <div className='useraside-main-container'>
       <h1 className='useraside-all-new-users-text'>New Users</h1>
       {!allUsers && <h1>Loading...</h1>}
-      {allUsers && allUsers.map(user => createFollowUserJSX(user))}
+      {allUsers && allUsers.map((user, index) => createFollowUserJSX(user))}
     </div>
   )
 }

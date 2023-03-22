@@ -25,7 +25,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
       .then((response) => {
         if (response.status === 200){
           form.reset()
-          refreshPage()
+          window.location.reload()
         }
       })
       .catch((error) => {
@@ -35,7 +35,6 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
 
   const createUserPage = () => {
     const createPostJSX = (post,index) => {
-      console.log(foundUser)
       if (!post._id) return
 
       const deleteComment = (commentId, postId, foundUserId) => {
@@ -133,7 +132,6 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
     } 
 
     const handleAddComment = async (e, index, id) => {
-      console.log(id, "*", index, "index", e)
       e.preventDefault();
       const form = e.target;
       console.log(form)
@@ -150,7 +148,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
             userprofilepicture: loggedInUser.profilepicture
           })
           .then((response) => {
-            console.log(response);
+            refreshPage()
           })
           .catch((error) => {
             console.log(error);

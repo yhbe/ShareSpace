@@ -9,8 +9,6 @@ function RouterSwitch() {
   const [allUsers, setAllUsers] = useState(undefined)
   const port = process.env.REACT_APP_PORT || "http://localhost:5000"
 
-  console.log(loggedInUser)
-
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -40,7 +38,7 @@ function RouterSwitch() {
     }
     fetchAllUsers()
   }, []);
-
+  
   const refreshPage = () => {
     const fetchAllUsers = async () => {
       try {
@@ -52,8 +50,6 @@ function RouterSwitch() {
     };
     fetchAllUsers();
   }
-
-  console.log(allUsers)
   
   return (
     <BrowserRouter>
@@ -66,6 +62,7 @@ function RouterSwitch() {
               setloggedInUser={setloggedInUser}
               port={port}
               allUsers={allUsers}
+              refreshPage={refreshPage}
             />
           }
         />

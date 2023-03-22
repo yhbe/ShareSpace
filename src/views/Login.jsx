@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-function Login({setloggedInUser, port}) {
+function Login({setloggedInUser, port, refreshPage}) {
   const navigate = useNavigate();
   const [showSignUp, setShowSignUp] = useState(false);
   const [signUpData, setSignUpData] = useState({
@@ -51,7 +51,7 @@ function Login({setloggedInUser, port}) {
       })
       if (response.ok){
         const res = await response.json()
-        setloggedInUser(res.newUser)
+        window.location.reload()
       }
     } catch (error) {
       console.log(error)

@@ -5,8 +5,8 @@ import UsersAside from '../components/UsersAside';
 import "./Homepage.css";
 import Login from './Login';
 
-function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
-  if (!loggedInUser) return <Login port={port} setloggedInUser={setloggedInUser}/>;
+function Homepage({loggedInUser,setloggedInUser, port, allUsers, refreshPage}) {
+  if (!loggedInUser) return <Login port={port} setloggedInUser={setloggedInUser} refreshPage={refreshPage}/>;
   
   const showFriendRequests = (friend) => {
     const addFriend = async (loggedInUserId, userId) => {
@@ -15,7 +15,9 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
           userId,
           loggedInUserId,
         });
-        return response.data;
+        if (response.status === 200){
+          refreshPage()
+        }
       } catch (error) {
         console.error(error);
         throw error;
@@ -79,9 +81,8 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
 
     return <>{postsJSX}</>;
   };
-
   
-  const followerPosts = allUsers.map(user => createFollowerPost(user))
+  const followerPosts = allUsers?.map(user => createFollowerPost(user))
   
   const posts = loggedInUser.posts.map(post => createPostJSX(post))
 
@@ -94,7 +95,7 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers}) {
         {posts && posts}
         {friendRequests}
         </div>
-        <UsersAside port={port} allUsers={allUsers} loggedInUser={loggedInUser} />
+        <UsersAside port={port} allUsers={allUsers} loggedInUser={loggedInUser} refreshPage={refreshPage}/>
       </main>
     </div>
   );

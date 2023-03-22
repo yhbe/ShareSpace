@@ -35,3 +35,7 @@
 .user-aside-username{
   margin-left: 5px;
 }
+
+.clickable{
+  cursor: pointer;
+}
