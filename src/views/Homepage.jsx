@@ -28,7 +28,9 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers, refreshPage}) {
       const user = allUsers.find(user => user._id === friend.userId)
 
       return (
-      <div>
+      <div className='displayon' onClick={() => {
+        document.querySelector(".displayon").classList.add("hidden")
+      }}>
         <p>{user.username} sent you a friend request</p>
         <button onClick={() => addFriend(loggedInUser.id, user._id)}>Add</button>
       </div>
@@ -42,7 +44,7 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers, refreshPage}) {
   const createPostJSX = (post) => {
     return (
       <div onClick={() => window.location = `../ShareSpace/${loggedInUser.id}`} className="user-post-container">
-        <div className="post-container-top">
+        <div className="post-container-top pointer">
         <p>{loggedInUser.username}</p>
         <h1>{post.content}</h1>
         </div>
@@ -69,7 +71,7 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers, refreshPage}) {
         <div
           key={post._id}
           onClick={() => (window.location = `../ShareSpace/${user._id}`)}
-          className="user-post-container"
+          className="user-post-container pointer"
         >
           <div className="post-container-top">
             <p>{user.username}</p>

@@ -8,6 +8,10 @@
   margin-top: 25px;
 }
 
+.hidden{
+  display: none;
+}
+
 
 /*from NavBar.css .align-nav-homepage-container {
   display: flex;

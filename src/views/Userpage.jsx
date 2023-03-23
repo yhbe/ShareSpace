@@ -84,8 +84,8 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
             <p className="comment-user">{comment.user}</p>
             </div>
             <p className="comment-text">{comment.text}</p>
-            {comment.userid === user && (
-              <i onClick={() => deleteComment(comment.id, post._id, foundUser._id)} className="fa-solid fa-trash-can"></i>
+            {comment.userid === loggedInUser.id && (
+              <i onClick={() => deleteComment(comment.id, post._id, foundUser._id)} className="fa-solid fa-trash-can clickable"></i>
             )}
           </div>
         );
@@ -99,10 +99,12 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
               <img src={foundUser.profilepicture} alt={foundUser.username} />
               <p className="post-username">{foundUser.username}</p>
             </div>
-            <i
-              onClick={() => deletePost(foundUser._id, post._id)}
-              className="fa-solid fa-trash-can"
-            ></i>
+            {user === loggedInUser.id && (
+              <i
+                onClick={() => deletePost(foundUser._id, post._id)}
+                className="fa-solid fa-trash-can clickable"
+              ></i>
+            )}
           </div>
           <div className="post-container-bottom">
             <p className="post-content">{post.content}</p>
@@ -114,19 +116,19 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
             <div className="post-like-or-comment">
               <button className="post-button">Like</button>
             </div>
-              <form
-                onSubmit={(e) => handleAddComment(e, index, post._id)}
-                className="user-add-comment-form"
-                action=""
-              >
-                <input
-                  type="text"
-                  name="add-a-comment-input"
-                  id=""
-                  placeholder="add a comment"
-                />
-                <button type="submit">Submit</button>
-              </form>
+            <form
+              onSubmit={(e) => handleAddComment(e, index, post._id)}
+              className="user-add-comment-form"
+              action=""
+            >
+              <input
+                type="text"
+                name="add-a-comment-input"
+                id=""
+                placeholder="add a comment"
+              />
+              <button type="submit">Submit</button>
+            </form>
             {commentJSX}
           </div>
         </div>
