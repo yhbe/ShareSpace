@@ -75,12 +75,14 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
       const createComments = (comment) => {
         return (
           <div key={comment.id} className="user-comment-div">
+            <div className='left-side-comment'>
             <img
               src={comment.profilepicture}
               alt={comment.user}
               className="comment-image"
             />
             <p className="comment-user">{comment.user}</p>
+            </div>
             <p className="comment-text">{comment.text}</p>
             {comment.userid === user && (
               <i onClick={() => deleteComment(comment.id, post._id, foundUser._id)} className="fa-solid fa-trash-can"></i>

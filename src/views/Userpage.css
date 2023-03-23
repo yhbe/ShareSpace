@@ -195,6 +195,10 @@ textarea {
   width: 40px;
 }
 
+.left-side-comment{
+  display: flex;
+}
+
 
 @media (max-width: 750px) {
   .userPage-container{
