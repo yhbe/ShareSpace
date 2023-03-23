@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Homepage from "./views/Homepage";
 import Userpage from "./views/Userpage";
 
@@ -54,6 +54,7 @@ function RouterSwitch() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/ShareSpace" />} />
         <Route
           path="/ShareSpace"
           element={
@@ -68,13 +69,18 @@ function RouterSwitch() {
         />
         <Route
           path="/ShareSpace/sign-up"
-          element={
-            <Homepage loggedInUser={loggedInUser} />
-          }
+          element={<Homepage loggedInUser={loggedInUser} />}
         />
         <Route
           path="/ShareSpace/:user"
-          element={<Userpage port={port} allUsers={allUsers} loggedInUser={loggedInUser} refreshPage={refreshPage}/>}
+          element={
+            <Userpage
+              port={port}
+              allUsers={allUsers}
+              loggedInUser={loggedInUser}
+              refreshPage={refreshPage}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>
