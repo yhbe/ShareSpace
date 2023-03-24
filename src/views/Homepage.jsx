@@ -93,12 +93,25 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers, refreshPage}) {
       <Navbar loggedInUser={loggedInUser} port={port} />
       <main className="align-nav-homepage-container homepage-aside-and-content">
         <div className="main-inner-container">
-        {followerPosts && followerPosts}
-        {posts && posts}
-        {friendRequests}
+          {followerPosts && followerPosts}
+          {posts && posts}
+          {friendRequests}
         </div>
-        <UsersAside port={port} allUsers={allUsers} loggedInUser={loggedInUser} refreshPage={refreshPage}/>
+        <UsersAside
+          port={port}
+          allUsers={allUsers}
+          loggedInUser={loggedInUser}
+          refreshPage={refreshPage}
+        />
       </main>
+      <div className="credit--">
+        <a
+          href="https://www.flaticon.com/free-icons/facebook"
+          title="facebook icons"
+        >
+          Favicon created by Freepik - Flaticon
+        </a>
+      </div>
     </div>
   );
 }

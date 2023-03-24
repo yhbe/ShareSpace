@@ -12,6 +12,17 @@
   display: none;
 }
 
+.credit--{
+  display: flex;
+  justify-content: right;
+  color: rgb(187, 183, 183);
+}
+
+.credit-- > a {
+  color: inherit;
+  text-decoration: none;
+}
+
 
 /*from NavBar.css .align-nav-homepage-container {
   display: flex;
