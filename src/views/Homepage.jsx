@@ -43,7 +43,7 @@ function Homepage({loggedInUser,setloggedInUser, port, allUsers, refreshPage}) {
   
   const createPostJSX = (post) => {
     return (
-      <div onClick={() => window.location = `../ShareSpace/${loggedInUser.id}`} className="user-post-container">
+      <div key={post._id} onClick={() => window.location = `../ShareSpace/${loggedInUser.id}`} className="user-post-container">
         <div className="post-container-top pointer">
         <p>{loggedInUser.username}</p>
         <h1>{post.content}</h1>

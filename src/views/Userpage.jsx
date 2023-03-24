@@ -25,7 +25,7 @@ function Userpage({port,allUsers, loggedInUser, refreshPage}) {
       .then((response) => {
         if (response.status === 200){
           form.reset()
-          window.location.reload()
+          refreshPage()
         }
       })
       .catch((error) => {
