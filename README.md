@@ -1,7 +1,7 @@
 
 # ShareSpace
 
-ShareSpace is a Facebook inspired social networking web application that allows users to connect with friends, share text-only posts, add comments, and view a newsfeed of their friends' posts. Users can also delete their own posts and comments, and send friend requests to add to grow their network.
+ShareSpace is a Facebook inspired social networking web application that allows users to connect with friends, share text-only posts, add comments, and view a newsfeed of their friends' posts. Users can also delete their own posts and comments, and search for new friends to add to their network.
 
 ## Getting Started
 To get started with ShareSpace, simply sign up for an account and start adding friends. Once you have friends in your network, you can begin sharing text-only posts and adding comments to your own and your friends' posts. You can also delete your own posts and comments at any time.
@@ -33,3 +33,10 @@ ShareSpace was built using the following technologies:
 - Mongoose
 
 ## Preview 
+
+![1](https://user-images.githubusercontent.com/101876022/227675846-a7678d89-d138-4374-ae12-4ee040f242cc.png)
+
+![2](https://user-images.githubusercontent.com/101876022/227675952-c689449b-7531-4b92-b7bd-2881bc4e08e7.png)
+
+![3](https://user-images.githubusercontent.com/101876022/227675883-718e832e-2677-4dad-a986-9214eda5198d.png)
+
