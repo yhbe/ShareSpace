@@ -22,6 +22,7 @@ Here are some of the key features of ShareSpace:
 - Home page shows newsfeed of all your friend's posts and your own
 - 'New Users' aside shows newly signed up users to add as friends
 - Profile page shows your own posts
+- Utilizes token-based authentication to allow users to stay logged in between sessions. This means that once a user logs in, their session will be maintained until they manually log out, even if they close the browser window or navigate away from the site. Tokens are generated and validated using JSON Web Tokens (JWT) and are stored securely in the user's browser cookies. This allows ShareSpace to provide a seamless and secure user experience.
 
 ## Technologies Used
 ShareSpace was built using the following technologies:
