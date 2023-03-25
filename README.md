@@ -1,6 +1,8 @@
 
 # ShareSpace
 
+View here [ShareSpace](https://sharespace.onrender.com/)
+
 ShareSpace is a Facebook inspired social networking web application that allows users to connect with friends, share text-only posts, add comments, and view a newsfeed of their friends' posts. Users can also delete their own posts and comments, and search for new friends to add to their network.
 
 ## Getting Started
