@@ -25,7 +25,7 @@ Here are some of the key features of ShareSpace:
 ShareSpace was built using the following technologies:
 
 - HTML
-- CSS
+- CSS (light styling)
 - JavaScript
 - Node.js
 - Express.js
